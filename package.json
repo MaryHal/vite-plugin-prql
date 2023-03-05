@@ -18,5 +18,9 @@
   "peerDependencies": {
     "prql-js": "*",
     "vite": "^3.0.0 || ^4.0.0"
-  }
+  },
+  "keywords": [
+    "vite",
+    "prql"
+  ]
 }
