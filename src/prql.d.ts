@@ -1,1 +1,4 @@
-declare module '*.prql'
+declare module '*.prql' {
+  const content: string
+  export default content
+}
