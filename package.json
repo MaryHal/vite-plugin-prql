@@ -1,9 +1,9 @@
 {
   "name": "vite-plugin-prql",
   "version": "0.2.0",
-  "repository": { 
-    "type": "git", 
-    "url": "https://github.com/MaryHal/vite-plugin-prql" 
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaryHal/vite-plugin-prql"
   },
   "keywords": [
     "vite",
@@ -17,7 +17,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
@@ -30,5 +31,8 @@
   "peerDependencies": {
     "prql-js": "*",
     "vite": "^3.0.0 || ^4.0.0"
+  },
+  "dependencies": {
+    "vitest": "^0.29.2"
   }
 }

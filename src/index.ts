@@ -1,9 +1,14 @@
-import type { Plugin } from 'vite';
+import type { Plugin } from 'vite'
 
 import { compile } from 'prql-js'
 
 import * as pl from 'parse-literals'
 import MagicString from 'magic-string'
+
+declare module '*.prql' {
+  const value: any
+  export default value
+}
 
 export function prql(s: TemplateStringsArray): string {
   return s.toString()
@@ -23,6 +28,7 @@ const fileRegex = /\.(prql)$/
 export default function prqlPlugin(): Plugin {
   return {
     name: 'vite-plugin-prql',
+    enforce: 'pre',
     transform(src: string, id: string) {
       if (fileRegex.test(id)) {
         return {

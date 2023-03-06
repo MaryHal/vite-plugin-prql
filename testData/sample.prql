@@ -1,0 +1,22 @@
+from invoices
+filter invoice_date >= @1970-01-16
+derive [                        # This adds columns
+  transaction_fees = 0.8,
+  income = total - transaction_fees  # Columns can use other columns
+]
+filter income > 1     # Transforms can be repeated.
+group customer_id (   # Use a nested pipeline on each group
+  aggregate [         # Aggregate each group to a single row
+    average total,
+    sum_income = sum income,
+    ct = count,
+  ]
+)
+sort [-sum_income]    # Decreasing order
+take 10               # Limit to top 10 spenders
+join c=customers [==customer_id]
+derive name = f"{c.last_name}, {c.first_name}"
+select [              # Select only these columns
+  c.customer_id, name, sum_income
+]
+derive db_version = s"version()" # S-string, escape hatch to SQL
