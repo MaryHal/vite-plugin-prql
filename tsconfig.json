@@ -27,5 +27,6 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true
   },
-  "exclude": ["**/*.spec.ts", "dist/**"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.spec.ts"]
 }
