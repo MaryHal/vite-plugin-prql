@@ -15,7 +15,7 @@ group customer_id (   # Use a nested pipeline on each group
 sort [-sum_income]    # Decreasing order
 take 10               # Limit to top 10 spenders
 join c=customers [==customer_id]
-derive name = f"{c.last_name}, {c.first_name}"
+derive name = f"`{c.last_name}, {c.first_name}`"
 select [              # Select only these columns
   c.customer_id, name, sum_income
 ]
