@@ -1,6 +1,7 @@
 {
   "name": "vite-plugin-prql",
   "version": "0.5.2",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MaryHal/vite-plugin-prql"
