@@ -65,16 +65,17 @@ Or you can use a tagged template literal with a prql query, which will be replac
 import prql from 'vite-plugin-prql'
 
 function GetAlbums(artist) {
-    return sqlExecutor.prepareQuery(prql`
-prql target:sql.sqlite
+  return sqlExecutor.prepareQuery(prql`
+    prql target:sql.sqlite
 
-from albums
-join artists [==artist_id]
-filter artists.name == s"?1"
-select [
-  albums.title
-]
-`).bind(artist)
+    from albums
+    join artists [==artist_id]
+    filter artists.name == s"?1"
+    select [
+      albums.title
+    ]
+  `)
+  .bind(artist)
   .execute()
 }
 ```
