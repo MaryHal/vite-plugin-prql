@@ -14,8 +14,8 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
-    "./prql": {
-      "types": "./dist/prql.d.ts"
+    "./types": {
+      "types": "./dist/types.d.ts"
     }
   },
   "type": "module",
@@ -24,11 +24,13 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "clean": "rimraf dist"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
     "prql-js": "^0.5.2",
+    "rimraf": "^4.3.1",
     "typescript": "^4.9.5",
     "vite": "^4.1.4",
     "vitest": "^0.29.2"
