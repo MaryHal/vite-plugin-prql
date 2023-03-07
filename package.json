@@ -12,6 +12,12 @@
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
   "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./prql": {
+      "types": "./dist/prql.d.ts"
+    }
+  },
   "type": "module",
   "files": [
     "dist"
