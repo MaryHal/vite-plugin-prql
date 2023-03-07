@@ -7,7 +7,7 @@ This is a simple [vite](https://vitejs.dev/) plugin that pre-processes [PRQL](ht
 Install the package using your package manager of choice (e.g. npm)
 
 ```
-npm i vite-plugin-prql --save-dev
+npm i prql-js vite-plugin-prql --save-dev
 ```
 
 ## Usage
