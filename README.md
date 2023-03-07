@@ -26,7 +26,27 @@ export default {
 }
 ```
 
-### Example
+If you plan to import `.prql` files directly (for example, `import query from './query.prql'`), you may see something like the following error:
+
+```
+Cannot find module './query.prql' or its corresponding type declarations.
+```
+
+To resolve this, you can update your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "moduleResolution": "node16",
+    "types": [
+      "vite-plugin-prql/prql"
+    ],
+    ...
+}
+```
+
+### Examples
 
 You can import `.prql` files directly in your code:
 
