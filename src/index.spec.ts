@@ -78,14 +78,14 @@ describe('prqlPlugin', () => {
     expect(result.code).toContain('SELECT')
   })
 
-  // it('should transform multipart prql templates', () => {
-  //   const plugin = prqlPlugin()
-  //   const result = plugin.transform(
-  //     'const table = "a"; prql`from ${table}` select [b]',
-  //     'some-id'
-  //   )
+  it('should transform multipart prql templates', () => {
+    const plugin = prqlPlugin()
+    const result = plugin.transform(
+      'const table = "my_table"; prql`from ${table}`\nselect [b]',
+      'some-id'
+    )
 
-  //   expect(result).not.toBeNull()
-  //   expect(result.code).toContain('SELECT')
-  // })
+    expect(result).not.toBeNull()
+    expect(result.code).toContain('my_table')
+  })
 })
