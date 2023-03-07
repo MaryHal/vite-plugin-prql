@@ -38,6 +38,7 @@
     "vite": "^3.0.0 || ^4.0.0"
   },
   "dependencies": {
+    "@rollup/pluginutils": "^5.0.2",
     "magic-string": "^0.30.0",
     "parse-literals": "^1.2.1"
   }

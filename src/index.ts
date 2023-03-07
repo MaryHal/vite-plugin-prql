@@ -1,17 +1,18 @@
-import type { Plugin } from 'vite'
+import { Plugin } from 'vite'
 
 import { compile } from 'prql-js'
 
 import * as pl from 'parse-literals'
 import MagicString from 'magic-string'
+import { dataToEsm } from '@rollup/pluginutils'
 
 export function prql(s: TemplateStringsArray): string {
   return s.toString()
 }
 
 function toModuleCode(s: string): string {
-  const compiled = compile(s)
-  return `const query = \`${compiled}\`; export default query;`
+  const sql = compile(s)
+  return dataToEsm({ sql }, { preferConst: true, namedExports: false })
 }
 
 function toString(prql: string): string {
