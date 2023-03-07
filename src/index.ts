@@ -1,4 +1,4 @@
-import { PluginOption } from 'vite'
+import { Plugin } from 'vite'
 
 import { compile, CompileOptions } from 'prql-js'
 
@@ -25,9 +25,7 @@ export type PrqlPluginConfig = {
   compileOptions?: CompileOptions
 }
 
-export default function prqlPlugin(
-  config: PrqlPluginConfig = {}
-): PluginOption {
+export default function prqlPlugin(config: PrqlPluginConfig = {}): Plugin {
   return {
     name: 'vite-plugin-prql',
     enforce: 'pre',
