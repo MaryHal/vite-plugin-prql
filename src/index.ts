@@ -1,4 +1,4 @@
-import { Plugin } from 'vite'
+import { PluginOption } from 'vite'
 
 import { compile } from 'prql-js'
 
@@ -21,7 +21,7 @@ function toString(prql: string): string {
 
 const fileRegex = /\.(prql)$/
 
-export default function prqlPlugin(): Plugin {
+export default function prqlPlugin(): PluginOption {
   return {
     name: 'vite-plugin-prql',
     enforce: 'pre',
