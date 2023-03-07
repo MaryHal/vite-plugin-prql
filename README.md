@@ -40,7 +40,7 @@ To resolve this, you can update your `tsconfig.json`:
     ...
     "moduleResolution": "node16",
     "types": [
-      "vite-plugin-prql/prql"
+      "vite-plugin-prql/types"
     ],
     ...
 }
