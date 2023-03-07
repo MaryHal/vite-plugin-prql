@@ -16,6 +16,37 @@ describe('template literal', () => {
     const transformed = prql`from table`
     expect(transformed).toContain('SELECT')
   })
+
+  it('should transform prql templates with string interpolation', () => {
+    const table = 'a'
+    const transformed = prql`from ${table}`
+    expect(transformed).toMatch(/FROM\s+a/)
+  })
+
+  it('should transform prql templates with many of the same string interpolation segment', () => {
+    const table = 'a'
+    const transformed = prql`
+      from ${table}
+      select [${table}.b]
+    `
+    expect(transformed).toMatch(/SELECT\s+b/)
+  })
+
+  it('should transform prql templates with many different string interpolation segments', () => {
+    const table = 'a'
+    const column1 = 'first'
+    const column2 = 'second'
+    const column3 = 'third'
+
+    const transformed = prql`
+      from ${table}
+      select [${table}.${column1}, ${table}.${column2}, ${table}.${column3}]
+    `
+    expect(transformed).toMatch(/SELECT/)
+    expect(transformed).toMatch(/first/)
+    expect(transformed).toMatch(/second/)
+    expect(transformed).toMatch(/third/)
+  })
 })
 
 describe('prqlPlugin', () => {
@@ -38,4 +69,23 @@ describe('prqlPlugin', () => {
     expect(result).not.toBeNull()
     expect(result.code).toContain('SELECT')
   })
+
+  it('should transform prql templates', () => {
+    const plugin = prqlPlugin()
+    const result = plugin.transform('prql`from table`', 'some-id')
+
+    expect(result).not.toBeNull()
+    expect(result.code).toContain('SELECT')
+  })
+
+  // it('should transform multipart prql templates', () => {
+  //   const plugin = prqlPlugin()
+  //   const result = plugin.transform(
+  //     'const table = "a"; prql`from ${table}` select [b]',
+  //     'some-id'
+  //   )
+
+  //   expect(result).not.toBeNull()
+  //   expect(result.code).toContain('SELECT')
+  // })
 })
