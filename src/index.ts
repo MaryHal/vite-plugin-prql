@@ -12,7 +12,7 @@ export function prql(s: TemplateStringsArray): string {
 
 function toModuleCode(s: string): string {
   const sql = compile(s)
-  return dataToEsm({ sql }, { preferConst: true, namedExports: false })
+  return dataToEsm(sql, { preferConst: true, namedExports: false })
 }
 
 function toString(prql: string): string {
