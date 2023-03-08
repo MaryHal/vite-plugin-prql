@@ -103,9 +103,36 @@ describe('prqlPlugin', () => {
       'some-id'
     )
 
-    console.log(JSON.stringify(result))
+    expect(result).not.toBeNull()
+    expect(result.code).toMatch(/TOP\s*\(?10\)?/)
+  })
+
+  it('should use sql target specified in query when compileOptions target is not set', () => {
+    const plugin = prqlPlugin()
+    const result = plugin.transform(
+      'const table = "my_table"; prql`prql target:sql.mssql\nfrom ${table} | take 10`',
+      'some-id'
+    )
 
     expect(result).not.toBeNull()
     expect(result.code).toMatch(/TOP\s*\(?10\)?/)
+  })
+
+  it('should prioritize compileOptions setting over sql target specified in prql query', () => {
+    const compileOptions = new prqljs.CompileOptions()
+    compileOptions.target = 'sql.postgres'
+
+    const plugin = prqlPlugin({
+      compileOptions,
+    })
+    const result = plugin.transform(
+      'const table = "my_table"; prql`prql target:sql.mssql\nfrom ${table} | take 10`',
+      'some-id'
+    )
+
+    console.log(JSON.stringify(result))
+
+    expect(result).not.toBeNull()
+    expect(result.code).toMatch(/LIMIT\s*10/)
   })
 })
