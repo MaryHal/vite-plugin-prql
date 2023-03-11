@@ -49,6 +49,15 @@ describe('template literal', () => {
     expect(transformed).toMatch(/second/)
     expect(transformed).toMatch(/third/)
   })
+
+  it('should transform complex templates', () => {
+    const table = () => 'a'
+
+    const transformed = prql`
+      from ${table() + 'bc'}
+    `
+    expect(transformed).toMatch(/FROM\s+abc/)
+  })
 })
 
 describe('prqlPlugin', () => {
@@ -129,8 +138,6 @@ describe('prqlPlugin', () => {
       'const table = "my_table"; prql`prql target:sql.mssql\nfrom ${table} | take 10`',
       'some-id'
     )
-
-    console.log(JSON.stringify(result))
 
     expect(result).not.toBeNull()
     expect(result.code).toMatch(/LIMIT\s*10/)
