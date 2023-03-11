@@ -25,12 +25,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --emitDeclarationOnly && esbuild src/index.ts --minify --outdir=dist",
     "test": "vitest",
     "clean": "rimraf dist"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
+    "esbuild": "^0.17.11",
     "prql-js": "^0.5.2",
     "rimraf": "^4.3.1",
     "typescript": "^4.9.5",
