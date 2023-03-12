@@ -6,7 +6,7 @@ specifiers:
   esbuild: ^0.17.11
   magic-string: ^0.30.0
   parse-literals: ^1.2.1
-  prql-js: ^0.5.2
+  prql-js: ^0.6
   rimraf: ^4.3.1
   typescript: ^4.9.5
   vite: ^4.1.4
@@ -20,7 +20,7 @@ dependencies:
 devDependencies:
   '@types/node': 18.14.6
   esbuild: 0.17.11
-  prql-js: 0.5.2
+  prql-js: 0.6.0
   rimraf: 4.3.1
   typescript: 4.9.5
   vite: 4.1.4_@types+node@18.14.6
@@ -837,8 +837,8 @@ packages:
       react-is: 17.0.2
     dev: true
 
-  /prql-js/0.5.2:
-    resolution: {integrity: sha512-Akh2Btd+DBo8BT5OWb/4cAOoyu4oHpK31JI3zz1s7/cP+bVZvTjn/FfYcicpwNtvGad3431D0Mc6QRaNHnWzAg==}
+  /prql-js/0.6.0:
+    resolution: {integrity: sha512-LMTGnaqBao8GCL5aqSe6phDe52At3UhoyLby31yITqj8xRGNWHcXmOdXX41t8jmoHAax6Pn0GI8vbXwi8H6W0g==}
     dev: true
 
   /react-is/17.0.2:
