@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-prql",
   "description": "Vite plugin to pre-processes PRQL queries into SQL queries at build time.",
-  "version": "0.7.1-alpha.8",
+  "version": "0.7.1-alpha.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -32,16 +32,17 @@
   "devDependencies": {
     "@types/node": "^18.14.6",
     "esbuild": "^0.17.11",
+    "prql-js": "^0.6",
     "rimraf": "^4.3.1",
     "typescript": "^4.9.5",
     "vite": "^4.1.4",
     "vitest": "^0.29.2"
   },
   "peerDependencies": {
+    "prql-js": "*",
     "vite": "^3.0.0 || ^4.0.0"
   },
   "dependencies": {
-    "prql-js": "^0.6",
     "magic-string": "^0.30.0",
     "parse-literals": "^1.2.1",
     "tosource": "2.0.0-alpha.3"
