@@ -1,6 +1,7 @@
 import { Plugin } from 'vite'
 
 import { compile, CompileOptions } from 'prql-js'
+export { CompileOptions } from 'prql-js'
 
 import * as pl from 'parse-literals'
 import MagicString from 'magic-string'
