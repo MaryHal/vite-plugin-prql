@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
-import prqlPlugin, { prql } from './index'
+import prqlPlugin from './index'
+import { prql } from './utils'
 import './types'
 
 import query from './testData/sample.prql'

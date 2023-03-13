@@ -62,7 +62,7 @@ function DoTheThing() {
 Or you can use a tagged template literal with a prql query, which will be replaced with a SQL query at build time.
 
 ```Javascript
-import prql from 'vite-plugin-prql'
+import prql from 'vite-plugin-prql/utils'
 
 function GetAlbums(artist) {
   return sqlExecutor.prepareQuery(prql`
