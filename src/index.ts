@@ -1,28 +1,32 @@
 import { Plugin } from 'vite'
 
-import { compile, CompileOptions } from 'prql-js'
+import prqljs from 'prql-js'
+export { CompileOptions } from 'prql-js'
 
 import * as pl from 'parse-literals'
 import MagicString from 'magic-string'
+
 import { dataToEsm } from '@rollup/pluginutils'
 
-export function prql(s: TemplateStringsArray, ...rest: string[]): string {
-  return s.map((str, i) => str + (rest[i] ?? '')).join('')
+function toModuleCode(
+  s: string,
+  compileOptions?: prqljs.CompileOptions
+): string {
+  const sql = prqljs.compile(s, compileOptions)
+  return dataToEsm(sql)
 }
 
-function toModuleCode(s: string, compileOptions?: CompileOptions): string {
-  const sql = compile(s, compileOptions)
-  return dataToEsm(sql, { preferConst: true })
-}
-
-function toString(prql: string, compileOptions?: CompileOptions): string {
-  return compile(prql, compileOptions) || ''
+function toString(
+  prql: string,
+  compileOptions?: prqljs.CompileOptions
+): string {
+  return prqljs.compile(prql, compileOptions) || ''
 }
 
 const fileRegex = /\.(prql)$/
 
 export type PrqlPluginConfig = {
-  compileOptions?: CompileOptions
+  compileOptions?: prqljs.CompileOptions
 }
 
 export default function prqlPlugin(config: PrqlPluginConfig = {}): Plugin {
