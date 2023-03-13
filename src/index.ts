@@ -6,7 +6,7 @@ export { CompileOptions } from 'prql-js'
 import * as pl from 'parse-literals'
 import MagicString from 'magic-string'
 
-import toSource from 'tosource'
+import { dataToEsm } from '@rollup/pluginutils'
 
 export function prql(s: TemplateStringsArray, ...rest: string[]): string {
   return s.map((str, i) => str + (rest[i] ?? '')).join('')
@@ -17,7 +17,7 @@ function toModuleCode(
   compileOptions?: prqljs.CompileOptions
 ): string {
   const sql = prqljs.compile(s, compileOptions)
-  return `export default ${toSource(sql)}`
+  return dataToEsm(sql)
 }
 
 function toString(
